@@ -6,21 +6,21 @@ class FormScreen extends StatefulWidget {
   @override
   FormScreenState createState() => FormScreenState();
 }
-
+// Define the state of the form screen
 class FormScreenState extends State<FormScreen> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _addressController = TextEditingController();
-
+// Validate the name field
   String? _validateName(String? value) {
     if (value == null || value.isEmpty) {
       return 'Name is required';
     }
     return null;
   }
-
+// Validate the email field
   String? _validateEmail(String? value) {
     if (value == null || value.isEmpty) {
       return 'Email is required';
@@ -30,7 +30,7 @@ class FormScreenState extends State<FormScreen> {
     }
     return null;
   }
-
+// Validate the phone field
   String? _validatePhone(String? value) {
     if (value == null || value.isEmpty) {
       return 'Phone number is required';
@@ -40,7 +40,7 @@ class FormScreenState extends State<FormScreen> {
     }
     return null;
   }
-
+// Validate the address field
   String? _validateAddress(String? value) {
     if (value == null || value.isEmpty) {
       return 'Address is required';
@@ -50,7 +50,7 @@ class FormScreenState extends State<FormScreen> {
     }
     return null;
   }
-
+// Build the form screen
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -82,6 +82,7 @@ class FormScreenState extends State<FormScreen> {
                       key: _formKey,
                       child: Column(
                         children: [
+                          // Build the text fields
                           _buildTextField(_nameController, 'Name', Icons.person, _validateName),
                           _buildTextField(_emailController, 'Email', Icons.email, _validateEmail),
                           _buildTextField(_phoneController, 'Phone Number', Icons.phone, _validatePhone, keyboardType: TextInputType.phone),
@@ -93,6 +94,7 @@ class FormScreenState extends State<FormScreen> {
                               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                             ),
                             onPressed: () {
+                              // Validate the form and navigate to the display screen
                               if (_formKey.currentState!.validate()) {
                                 Navigator.pushNamed(
                                   context,
@@ -120,7 +122,7 @@ class FormScreenState extends State<FormScreen> {
       ),
     );
   }
-
+// function to style the text fields
   Widget _buildTextField(TextEditingController controller, String label, IconData icon, String? Function(String?) validator, {TextInputType keyboardType = TextInputType.text}) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),

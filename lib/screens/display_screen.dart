@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class DisplayScreen extends StatelessWidget {
   const DisplayScreen({super.key});
-
+// Build the display screen
   @override
   Widget build(BuildContext context) {
     final Map<String, String> userData =
@@ -41,11 +41,13 @@ class DisplayScreen extends StatelessWidget {
                     ),
                     Divider(thickness: 1.5),
                     SizedBox(height: 10),
+                    // Display user details
                     _buildDetailRow(Icons.person, 'Name', userData['name']!),
                     _buildDetailRow(Icons.email, 'Email', userData['email']!),
                     _buildDetailRow(Icons.phone, 'Phone', userData['phone']!),
                     _buildDetailRow(Icons.home, 'Address', userData['address']!),
                     SizedBox(height: 20),
+                    // Go back button
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         padding: EdgeInsets.symmetric(vertical: 12, horizontal: 40),
@@ -63,7 +65,7 @@ class DisplayScreen extends StatelessWidget {
       ),
     );
   }
-
+// Style Build Detail's rows to display user details
   Widget _buildDetailRow(IconData icon, String label, String value) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
